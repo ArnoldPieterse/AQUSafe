@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>SHE</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.idigitalcontents.com/a/anglo-american-group/font/fonts.css" rel="stylesheet" type="text/css" media="All">
+    <link href="https://viz.tools.investis.com/dataVizProjects/anglo-american-map-2020/css/anglo-american-map-2020.min.css" rel="stylesheet" type="text/css" media="All">
+    <link rel="stylesheet" type="text/css" href="../styles/site.css">
+    <link rel="stylesheet" type="text/css" href="../styles/MainSite.css">
+    <style type="text/css">
+        body {
+            background-image: url('underground_Homescreen.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100% 120%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://www.angloamerican.com/~/media/Images/A/Anglo-American-Group/Universal/logo/anglo-american-logo-white.svg?iar=0" alt="" />
+        </div>
+            <h2>FRM & SLP</h2>
+    </header>
+    <div class="content">
+        <div class="MenuItems" id="menuItems">
+<div class="row">
+    <div class="column">
+        <div class="card" onclick="showReader('');">
+            <i class="material-icons">book</i>
+            <h3>FRM</h3>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card" onclick="showReader('');">
+            <i class="material-icons">bookmark</i>
+            <h3>SLP</h3>
+        </div>
+    </div>
+</div>
+
+            <div class="row">
+                <div class="card" style="opacity: 0;"></div>
+            </div>
+
+            <div class="row">
+                <div class="card2" style="opacity: 0;"></div>
+            </div>
+
+<div class="row">
+    <div class="Notice">
+        <h3>Touch activated</h3>
+        <i class="material-icons">touch_app</i>
+    </div>
+</div>
+
+<div class="ReaderContainer" id="readerContainer">
+    <div class="sidebar" id="sideList">
+    </div>
+
+    <div class="reader">
+        <iframe title="read" name="ireader" id="ireadid" class="ifreader" src=""></iframe>
+    </div>
+</div>
+
+<table class="visitList" id="visitList">
+    <tr>
+        <th>Visiting Company</th>
+        <th>Reference</th>
+        <th>Purpose</th>
+        <th>Visitor Count</th>
+        <th>Visitors</th>
+        <th>Requestor</th>
+        <th>Escort(s)</th>
+        <th>Department</th>
+        <th>Start Visit</th>
+        <th>End Visit</th>
+        <th>Status</th>
+    </tr>
+</table>
+
+<div class="GHRContainer" id="GHRContainer">
+    <div class="readerGHR" id="GHRList">
+        <iframe title="read" name="ireaderGHR" id="ireadidGHR" class="ifreader" src=""></iframe>
+    </div>
+</div>
+
+<div class="HazardRegContainer" id="HazardRegContainer">
+    <div class="readerHazardReg" id="HazardRegList">
+        <iframe name="ireaderHazardReg" id="ireadidHazardReg" class="ifreader" title="LL Hazard Report" width="1140" height="541.25" src="" frameborder="0" allowFullScreen="true"></iframe>
+    </div>
+</div>
+
+<div class="LoadingScreen" id="loadingScreen">
+    <div class="DirtFloor"></div>
+    <div class="Truck">
+        <div class="TBody"></div>
+        <div class="TBack"></div>
+        <div class="TWheel1"></div>
+        <div class="TWheel2"></div>
+        <div class="DirtTruck">
+            <div class="Dirt1"></div>
+            <div class="Dirt2"></div>
+            <div class="Dirt3"></div>
+        </div>
+    </div>
+</div>
+</div>
+    <footer>
+        <div style> </div>
+        <div class="column">
+            <div class="card2" onclick="location.href = 'http://aisaqusafety01:30000/';">
+                <img src="Home.png" width="80" height="60">
+            </div>
+        </div>
+            
+        
+        <div class="MenuAndBack" id="menuAndBack">
+            <div class="menu" onclick="showMenu();">
+                <i class="material-icons">menu</i>
+            </div>
+        </div>
+
+        <div id="foot">
+            <p>Aquila Underground Mine</p>
+        </div>
+
+    </footer>
+    
+</body>
+<script type="text/javascript" src="../scripts/site.js"></script>
+</html>

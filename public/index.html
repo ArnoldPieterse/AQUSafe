@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>SHE</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.idigitalcontents.com/a/anglo-american-group/font/fonts.css" rel="stylesheet" type="text/css" media="All">
+    <link href="https://viz.tools.investis.com/dataVizProjects/anglo-american-map-2020/css/anglo-american-map-2020.min.css" rel="stylesheet" type="text/css" media="All">
+    <link rel="stylesheet" type="text/css" href="../styles/site.css">
+    <link rel="stylesheet" type="text/css" href="../styles/MainSite.css">
+    <style type="text/css">
+        body {
+            background-image: url('Underground_Homescreen.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100% 120%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://www.angloamerican.com/~/media/Images/A/Anglo-American-Group/Universal/logo/anglo-american-logo-white.svg?iar=0" alt="" />
+        </div>
+            <h2>SAFETY BOARD</h2>
+    </header>
+
+    <div class="content">
+                <div class="MenuItems" id="menuItems">
+        <div class="row">
+            <div class="column">
+                <div class="card" onclick="location.href = 'http://aamccapsp/sites/aquila-she-ms/Lists/SHEDocumentsViewOnly/POL - Policies/AQL_POL_004 SMC_Safety, Health and Environment (SHE) Policy.pdf';">
+                    <img src="Worker on the job.png" width="110" height="80">
+                    <h3>SHE Policy</h3>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card" onclick="location.href = 'http://aamccapsp/sites/aquila-she-ms/Pages/Home.aspx';">
+                    <img src="SHMS.png" width="100" height="80">
+                    <h3>SHEMS</h3>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card" onclick="location.href = 'http://aamccapsp/sites/aquila-she-ms/Lists/MineRecords/Forms/DefaultMineRecords.aspx';">
+                    <img src="Clipboard2.png" width="75" height="80">
+                    <h3>Mine Record</h3>
+                </div>
+            </div>
+
+			<div class="column">
+                <div class="card">
+                    <img src="clipboard.png" width="70" height="80">
+                    <h3>Inspection Reports</h3>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="Trackingradar.png" width="75" height="75">
+                    <h3>TARPS</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <div class="card" onclick="location.href ='http://aisaqusafety01:30000/safetycomms.html';">
+                    <img src="Feedback2.png" width="70" height="80">
+                    <h3>Safety Communications</h3>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card" onclick="location.href = 'http://aisaqusafety01:30000/FRM+SLP.html';">
+                    <img src="Coalmineworker2.png" width="70" height="80">
+                    <h3>FRM+SLP</h3>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card" onclick="location.href = 'http://aisaqusafety01:30000/SSHR.html';">
+                    <img src="SSHR.png" width="80" height="80">
+                    <h3>SSHR</h3>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card" onclick="showReader('');">
+                    <img src="Health.png" width="90" height="80">
+                    <h3>Health & Wellness</h3>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card" onclick="showGHR();">
+                    <img src="Facemask.png" width="90" height="85">
+                    <h3>Occupational Hygiene</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <div class="card" onclick="showReader('');">
+                    <img src="Contractor.png" width="90" height="80">
+                    <h3>Contractor Management</h3>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card" onclick="showNoticeboards();">
+                    <img src="Hazard.png" width="80" height="85">
+                    <h3>Hazard ID</h3>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card" onclick="showReader('');">
+                    <img src="Bulb-colour.png" width="90" height="85">
+                    <h3>Innovations</h3>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card" onclick="showNoticeboards();">
+                    <img src="noticeboard.png" width="90" height="75">
+                    <h3>Noticeboard</h3>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card" onclick="showNoticeboards();">
+                    <img src="Feedback.png" width="70" height="65">
+                    <h3>Feedback</h3>
+                    <p>Scan QR code</p>
+                </div>
+            </div>
+
+            
+        </div>
+        <div class="row">
+            <div class="Notice">
+                <h3>Touch activated</h3>
+                <i class="material-icons">touch_app</i>
+            </div>
+        </div>
+    </div>
+
+        <div class="ReaderContainer" id="readerContainer">
+            <div class="sidebar" id="sideList">
+            </div>
+
+            <div class="reader">
+                <iframe title="read" name="ireader" id="ireadid" class="ifreader" src=""></iframe>
+            </div>
+        </div>
+
+        <table class="visitList" id="visitList">
+            <tr>
+                <th>Visiting Company</th>
+                <th>Reference</th>
+                <th>Purpose</th>
+                <th>Visitor Count</th>
+                <th>Visitors</th>
+                <th>Requestor</th>
+                <th>Escort(s)</th>
+                <th>Department</th>
+                <th>Start Visit</th>
+                <th>End Visit</th>
+                <th>Status</th>
+            </tr>
+        </table>
+
+        <div class="GHRContainer" id="GHRContainer">
+            <div class="readerGHR" id="GHRList">
+                <iframe title="read" name="ireaderGHR" id="ireadidGHR" class="ifreader" src=""></iframe>
+            </div>
+        </div>
+
+        <div class="HazardRegContainer" id="HazardRegContainer">
+            <div class="readerHazardReg" id="HazardRegList">
+                <iframe name="ireaderHazardReg" id="ireadidHazardReg" class="ifreader" title="LL Hazard Report" width="1140" height="541.25" src="" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+        </div>
+
+        <div class="LoadingScreen" id="loadingScreen">
+            <div class="DirtFloor"></div>
+                <div class="Truck">
+                    <div class="TBody"></div>
+                    <div class="TBack"></div>
+                    <div class="TWheel1"></div>
+                    <div class="TWheel2"></div>
+                    <div class="DirtTruck">
+                    <div class="Dirt1"></div>
+                    <div class="Dirt2"></div>
+                    <div class="Dirt3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="card" id="01SSHR_Inspection_Report" onclick="location.href = 'http://aamccapsp/sites/aquila-she-ms/Lists/MineRecords/SSHR REPORT 2024 - 01 January - Luke Shackleton.pdf';">
+                <img src="/icons/01SSHR_Inspection_Report.png" width="80" height="80">
+                <h3>SSHR Inspection Report</h3>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card" id="02All_other_TARPS" onclick="location.href = 'http://aamccapsp/sites/aquila-she-ms/Lists/SHEDocumentsViewOnly/Forms/ViewOnlyTARPs.aspx';">
+                <img src="/icons/02All_other_TARPS.png" width="80" height="80">
+                <h3>All other TARPS</h3>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card" id="07RSHQ_Safety_Alerts" onclick="location.href = 'https://www.rshq.qld.gov.au/safety-notices';">
+                <img src="/icons/07RSHQ_Safety_Alerts.png" width="80" height="80">
+                <h3>RSHQ Safety Alerts</h3>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <marquee scrollamount="13" id="banner">
+            <font size="8" face="Verdana">
+            <font color="#a96f6f">
+                Please review the latest safety documents and changes.
+        </marquee>
+
+        <div class="MenuAndBack" id="menuAndBack">
+            <div class="menu" onclick="showMenu();">
+                <i class="material-icons">menu</i>
+            </div>
+            <div class="back" onclick="showMenu();">
+                <i class="material-icons">arrow_back</i>
+            </div>
+        </div>
+        <div id="foot">
+            <p>Aquila Underground Mine</p>
+        </div>
+    </footer>
+</body>
+<script type="text/javascript" src="../scripts/site.js"></script>
+</html>

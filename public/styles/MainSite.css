@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "AASmartSans";
+    font-weight: normal;
+    font-style: normal;
+}
+
+.MenuItems {
+    position: relative;
+
+    width: 99%;
+}
+  
+/* Float four columns side by side */
+.column {
+    position: center;
+    float: left;
+    width: 20%;
+    padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {
+    margin: 0 -5px;
+}
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+.material-icons {
+    font-size: 60px;
+}
+
+.angloicons {
+    font-size: 72px;
+}
+
+/* Style the counter cards */
+.card {
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #ffffff97;
+    margin: 30px;
+    height: 250px;
+    max-width: 400px;
+    border-radius: 50px;
+    color: #1a5ece;
+    overflow-wrap: break-word;
+}
+
+.card img {
+    width: 35%;
+    height: 40%;
+    margin: 10px;
+}
+
+.card h3 {
+    position: absolute;
+    font-size: 20px;
+    bottom: 10;
+    left: 10%;
+    right: 10%;
+}
+
+.card2 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #ffffff;
+    margin: 30px;
+    height: 90px;
+    border-radius: 50px;
+    color: #1a5ece;
+}
+
+
+.card:hover:not(.active) {
+    background-color: #0f2e92;
+    color: white;
+}
+
+.card.active {
+    background-color: #04AA6D;
+    color: white;
+}
+.footercard {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #ffffff;
+    margin: 30px;
+    height: 170px;
+    border-radius: 50px;
+    color: #1a5ece;
+}
+
+
+.footercard:hover:not(.active) {
+    background-color: #0f2e92;
+    color: white;
+}
+
+.footercard.active {
+    background-color: #04AA6D;
+    color: white;
+}

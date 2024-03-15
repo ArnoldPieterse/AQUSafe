@@ -1,0 +1,464 @@
+body {
+    margin-bottom: 0px;
+    font-family: "AASmartSans";
+    font-weight: normal;
+    font-style: normal;
+    margin: 0px;
+    text-align: center;
+    position: relative;
+    height: 100%;
+    width: auto;
+    background-color: #d6d7d8
+}
+
+header {
+    position: relative;
+    overflow: hidden;
+    background-color: #002776;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    box-shadow: grey 0 0 5px 0;
+}
+
+header img {
+    height: 35px;
+    text-shadow: lightgrey 0px 0px 2px;
+}
+
+header * {
+    display: inline;
+}
+
+header h2 {
+    float: right;
+    color: white;
+    text-align: center;
+    padding: 1px;
+    text-decoration: none;
+    line-height: 1px;
+    border-radius: 1px;
+    text-shadow: lightgrey 0px 0px 2px;
+}
+
+.logo {
+    display: block;
+    float: left;
+    align-items: center;
+}
+
+.content {
+    display: block;
+    height: auto;
+}
+
+/* The side navigation menu */
+.sidebar {
+    position: fixed;
+    float: left;
+    width: 20%;
+    height: 89%;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sidebar links */
+.itemlink {
+    display: block;
+    margin-bottom: 0px;
+    margin-right: 2px;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+    overflow: hidden;
+    align-items: stretch;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px  10px 10px 10px;
+}
+
+/* Active/current link */
+.sidebar a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.reader {
+  overflow: hidden;
+  padding-top: 56.25%; /* 16:9*/
+  position: fixed;
+  right: 0;
+  height: 89%;
+  width: 80%;
+  padding-right: 10%;
+}
+
+.readerGHR {
+    overflow: hidden;
+    padding-top: 56.25%; /* 16:9*/
+    position: fixed;
+    right: 0;
+    height: 90%;
+    width: 100%;
+    padding-right: 10%;
+  }
+
+  .readerHazardReg {
+    overflow: hidden;
+    padding-top: 56.25%; /* 16:9*/
+    position: fixed;
+    right: 0;
+    height: 90%;
+    width: 100%;
+    padding-right: 10%;
+  }
+
+.ifreader {
+  border: 0;
+ height: 100%;
+ left: 0;
+ position: absolute;
+ top: 0;
+ width: 100%;
+}
+
+.previousround {
+  z-index: 3;
+  background-color: #f1f1f1;
+  color: grey;
+  border-radius: 50%;
+  box-shadow: lightgrey 0 0 2px 2px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  margin: 1%;
+  padding: 10px;
+  text-shadow: lightgrey 0px 0px 2px 0;
+}
+
+.previousround a:hover:not(.active) {
+  background-color: black;
+  box-shadow: lightgrey 0 0 0 0;
+  text-shadow: lightgrey 0 0 0 0;
+}
+
+footer {
+    z-index: 1;
+    background-color: transparent;
+    color: lightgrey;
+    text-align: right;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-right: 10%;
+}
+
+/* Visitor page */
+.visitList {
+    padding-bottom: 10%;
+    right: 0;
+    height: 89%;
+    border-collapse: collapse;
+  }
+
+.visitList td {
+    border: #c5c5c5 1px solid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    background-color: #eeeeee;
+    color: #363945;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.visitList th {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-image: linear-gradient(to top, #ffffff79, #ebebeb);
+}
+
+/* Column 1 */
+
+.visitingCompany {
+    margin: 2px;
+}
+
+.visitCount {
+    background-color: #0055c4;
+    color: white;
+    border-radius: 66px;
+    border: #c5c5c5 1px solid;
+    padding: 2px;
+    margin: 2px;
+    width: 20px;
+    height: 20px;
+    font-size: small;
+}
+
+
+/* ____________________________________*/
+
+.MenuItems {
+    display: none;
+}
+
+.ReaderContainer {
+    display: none;
+}
+
+.visitList {
+    display: none;
+}
+
+.MenuAndBack {
+    display: none;
+    position: fixed;
+    left: 5px;
+    bottom: 5px;
+    font-size: small;
+    box-shadow: 0 4px 8px 0 rgba(241, 240, 240, 0.2);
+    text-align: left;
+    background-color: #f1f1f1;
+    color: #1a5ece;
+    margin: 2px;
+    padding: 5px;
+    border-radius: 35px;
+}
+
+.MenuAndBack:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+.MenuAndBack .material-icons {
+    font-size: 40px;
+    color: #363945;
+    text-shadow: lightgrey 0px 0px 2px 0;
+    margin: 10px;
+}
+
+.LoadingScreen {
+    display: block;
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+}
+
+.DirtFloor {
+    display: block;
+    position: relative;
+    top: 30%;
+    left: 20%;
+    width: 30%;
+    height: 30%;
+    background-image: url('images/pile.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10;
+    animation: breathing 10s infinite;
+}
+
+@keyframes breathing {
+    0% { transform: scale(1); }
+    56% { transform: scale(1); }
+    60% { transform: scale(1, 1.2); }
+    63% { transform: scale(1); }
+    66% { transform: scale(1, 1.2); }
+    70% { transform: scale(1); }
+    73% { transform: scale(1, 1.2); }
+    76% { transform: scale(1); }
+    80% { transform: scale(1, 1.2); }
+    88% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+.Notice {
+    animation: breathing 10s infinite;
+    -webkit-animation: colorchange alternate infinite;
+    animation-duration: 10s;
+    animation-direction: alternate;
+    /*font-size: xxx-large;*/
+    margin: 10px;
+    height: 250px;
+    padding: 16px;
+    text-align: center;
+}
+
+@keyframes colorchange /* Safari and Chrome - necessary duplicate */
+{
+  0%,100% {color: #1abc9c }
+  5% {color: #2ecc71 }
+  10% {color: #3498db }
+  15% {color: #9b59b6 }
+  20% {color: #34495e }
+  25% {color: #16a085 }
+  30% {color: #27ae60 }
+  35% {color: #2980b9 }
+  40% {color: #8e44ad }
+  45% {color: #2c3e50 }
+  50% {color: #f1c40f }
+  55% {color: #e67e22 }
+  60% {color: #e74c3c }
+  65% {color: #ecf0f1 }
+  70% {color: #95a5a6 }
+  75% {color: #f39c12 }
+  80% {color: #d35400 }
+  85% {color: #c0392b }
+  90% {color: #bdc3c7 }
+  95% {color: #7f8c8d }
+}
+
+.Truck {
+    display: block;
+    position: relative;
+    left: -150%;
+    width: 200%;
+    height: 30%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 11;
+    animation: driving 10s infinite;
+}
+
+@keyframes driving {
+    0% { transform: translateX(0) translateY(0); scale: 0;}
+    40% { transform: translateX(90%) translateY(-50%); scale: 100%;}
+    60% { transform: translateX(70%) translateY(0); scale: 100%; opacity: 1;}
+    80% { transform: translateX(70%); scale: 100%; opacity: 1;}
+    100% { transform: translateX(100%); scale: 100%; opacity: 0;}
+}
+
+.TBody {
+    position: relative;
+    height: 80%;
+    width: 80%;
+    background-image: url('images/body.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 12;
+}
+
+.TWheel1 {
+    position: relative;
+    height: 80%;
+    width: 80%;
+    top: -120%;
+    left: -5%;
+    z-index: 13;
+    background-image: url('images/wheel.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.TWheel2 {
+    position: relative;
+    height: 80%;
+    width: 80%;
+    top: -200%;
+    left: 3.3%;
+    z-index: 13;
+    background-image: url('images/wheel.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.TBack {
+    position: relative;
+    height: 80%;
+    width: 80%;
+    top: -95%;
+    left: -1.7%;
+    z-index: 13;
+    background-image: url('images/bucket.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: dumping 10s infinite;
+}
+
+@keyframes dumping {
+    0% { transform: rotate(0deg); }
+    40% { transform: rotate(0deg); }
+    60% { transform: rotate(0deg); }
+    70% { transform: rotate(-45deg) translateY(-40%);}
+    100% { transform: rotate(0deg) translateY(0%); }
+}
+
+.DirtTruck {
+    display: block;
+    position: relative;
+    top: -300%;
+    left: 20%;
+    width: 30%;
+    height: 30%;
+    z-index: 12;
+}
+
+.Dirt1 {
+    position: relative;
+    height: 120%;
+    width: 80%;
+    top: -95%;
+    left: 4%;
+    background-image: url('images/rock.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 12;
+    animation: fallRotate 10s infinite;
+}
+
+.Dirt2 {
+    position: relative;
+    height: 120%;
+    width: 80%;
+    top: -250%;
+    left: 25%;
+    background-image: url('images/rock.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 12;
+    animation: fallRotate 10s infinite;
+}
+
+.Dirt3 {
+    position: relative;
+    height: 100%;
+    width: 80%;
+    top: -420%;
+    left: 12%;
+    background-image: url('images/rock.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 12;
+    animation: fallRotate 10s infinite;
+}
+
+@keyframes fallRotate {
+    0% { transform: rotate(0deg); }
+    40% { transform: rotate(0deg); }
+    60% { transform: rotate(0deg); }
+    70% { transform: rotate(-45deg) translateY(-140%); opacity: 95;}
+    80% { transform: rotate(-80deg) translateY(-200%); opacity: 0;}
+    100% { transform: rotate(-100deg) translateY(-400%); opacity: 0;}
+}

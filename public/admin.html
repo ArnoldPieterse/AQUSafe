@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SHE Admin</title>
+    <!-- Stylesheets -->
+    
+    <link rel="stylesheet" type="text/css" href="../styles/AdmStyles.css">
+
+    </style>
+</head>
+<body>
+    <header>
+            <h1>ADMIN</h1>
+    </header>
+    <div class="content">
+
+        <div class="configOptions" id="configOptions">
+            
+        </div>
+
+        <main class="app">
+    
+            <div class="header">
+              <h2>Upload Images</h2>
+              <div class="server-message"></div>
+            </div>
+        
+            <div class="input-div">
+              <p>Drag & drop photos here or <span class="browse">Browse</span></p>
+              <input type="file" class="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg"/>
+            </div>
+        
+            <form id="saved-form">
+              <div class="header">
+                <h3>Saved in Server</h3>
+                <button type="submit">Delete</button>
+              </div>
+              <div class="saved-div"></div>
+            </form>
+        
+            <form id="queued-form">
+              <div class="header">
+                <h3>Queued in Frontend</h3>
+                <button type="submit">Upload</button>
+              </div>
+              <div class="queued-div"></div>
+            </form>
+        
+          </main>
+
+
+    </div>
+    <footer>
+
+    </footer>
+</body>
+<script type="text/javascript" src="../scripts/adminsite.js"></script>
+<script type="text/javascript" src="../scripts/imgUpAdm.js"></script>
+</html>

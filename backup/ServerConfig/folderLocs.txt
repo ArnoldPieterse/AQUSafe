@@ -1,0 +1,20 @@
+02SLP,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/22. SLP/Touchscreen communications
+02Fire_Officer_Report,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/13. COMPLIANCE/1. Emergency Response/02. Fire Officer/02. Fire Officer Report/2024
+01SHE_Brief,//lsauaqu001.anglo.local/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/06 Communication Consultation and Participation/01 SHE Briefs/2024
+01FRM,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/06 Communication Consultation and Participation/Safety touchscreens/FRM
+01MSO_report,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/06 Communication Consultation and Participation/Safety Touchscreens/MSO Report
+02Red_Alert,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/06 Communication Consultation and Participation/03 RED ALERT/2024
+03Amber_Alert,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/06 Communication Consultation and Participation/04 AMBER ALERT/2024
+04Green_Alert,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/06 Communication Consultation and Participation/05 GREEN ALERT/2024
+05Memo,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/06 Communication Consultation and Participation/06 MEMO/2024
+06Investigation_Feedback,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/06 Communication Consultation and Participation/Investigation Feedback/Monthly Investigation Feedback
+07Health_&_Wellness,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/06 Communication Consultation and Participation/Safety touchscreens/Health and Wellness
+10Audit_Schedule,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/06 Communication Consultation and Participation/Safety touchscreens/Contractor Management/Audit Schedule
+11Newsletter,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/06 Communication Consultation and Participation/Safety touchscreens/Contractor Management/Newsletter
+02SSHR_Contact_Details,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/06 Communication Consultation and Participation/Safety touchscreens/SSHR
+012023_Summary,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/06 Communication Consultation and Participation/Safety touchscreens/Hygiene/2023 Summary
+022024_Status,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/06 Communication Consultation and Participation/Safety touchscreens/Hygiene/2024 Status
+08SHEMS_Change_Notification_Report,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/07 Documentation and Control of Documents/Document Controller Reports/Documents Uploaded in Last 7 day
+12Hazard_ID_Report,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/18. BUSINESS INTEGRATION/Mine Systems Officer/SORD/SORD Actions/Hazard Report/Hazard Report Slides
+08Innovations,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/06 Communication Consultation and Participation/Safety touchscreens/Innovations
+09Noticeboard,//lsauaqu001/wrkgroup/aquila/Aquila/1. AQUILA/6. SHE/06 Communication Consultation and Participation/Safety touchscreens/Noticeboards

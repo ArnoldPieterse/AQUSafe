@@ -1,0 +1,12 @@
+shebriefs,2
+shepolicy,0
+ssesshrcontr,0
+inspsshr,2
+mreishr,2
+mreinsp,2
+mresshr,2
+inpoce,2
+tooltalk,2
+mrems,0
+slp,0
+frm,0

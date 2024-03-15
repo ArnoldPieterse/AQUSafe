@@ -1,0 +1,2 @@
+SHEMS,http://aamccapsp/sites/aquila-she-ms/Pages/Home.aspx
+Mine_Record,http://aamccapsp/sites/aquila-she-ms/Lists/MineRecords/Forms/DefaultMineRecords.aspx
