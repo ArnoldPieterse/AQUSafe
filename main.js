@@ -435,41 +435,14 @@ async function refreshFileList(filesLoc, fromLoc, fromPub, direction){
 //if the file is older than the day limit, then do not copy the file
 //or if the day limit is 0, then copy the file
 //first delete all files in the public folder
-function initialFileCopy() {
-  for (var key in folderLocs) {
+async function initialFileCopy() {
+  for (let key in folderLocs) {
+    // Initially clear all files and reset publication locations for the directory
     deleteAllFiles(key);
     pubLocs[key] = [];
-    var fileDetails = [];
 
-    // Gather file details
-    fs.readdirSync(folderLocs[key]).forEach(file => {
-      var fileName = file.split("/").pop().replace(/'/g, ""); // Clean file name
-      var actualFile = path.join(folderLocs[key], file);
-      var days = getFileDays(actualFile);
-
-      fileDetails.push({days, actualFile, key, fileName});
-    });
-
-    // Sort files by days in ascending order
-    fileDetails.sort((a, b) => a.days - b.days);
-
-    // Determine action based on folderDayLimits[key]
-    if (folderDayLimits[key] > 5) {
-      // Treat as days
-      fileDetails.forEach(detail => {
-        if (detail.days <= folderDayLimits[key]) {
-          copyFile(detail.actualFile, detail.key, detail.fileName);
-          addPubLoc(detail.key, detail.fileName, detail.days);
-        }
-      });
-    } else {
-      // Treat as file count, including special handling for 0
-      var limit = folderDayLimits[key] === 0 ? 1 : folderDayLimits[key];
-      for (var i = 0; i < Math.min(fileDetails.length, limit); i++) {
-        copyFile(fileDetails[i].actualFile, fileDetails[i].key, fileDetails[i].fileName);
-        addPubLoc(fileDetails[i].key, fileDetails[i].fileName, fileDetails[i].days);
-      }
-    }
+    // Immediately process the current state of the directory as if it had changed
+    await processFileChange(key);
   }
 }
 
@@ -479,39 +452,56 @@ function initialFileCopy() {
 // each folder's day limit is saved in key value pairs folderDayLimits.
 // Use the roundNumbers function to round the number of days to the nearest whole number.
 // Push the path of the file to locs using the direction as the key, and remove from locs it when when the file got unlinked (One key can have multiple paths)
-async function startWatchers(){
-    for (var key in folderLocs) {
-      watcher[key] = chokidar.watch(folderLocs[key], {
-        persistent: true, 
-        awaitWriteFinish: false,
-        usePolling: true,
-        ignoreInitial: true,
-      });
-      console.log(folderLocs[key]);
-      watcher[key].on('add', async function(path) {
-        console.log(key + " :::  ADDED");
-        var days = getFileDays(path);
-        if (days <= folderDayLimits[key] || folderDayLimits[key] == 0){
-          if(locs[key] == null){
-            locs[key] = [];
-          }
-          locs[key] = days +";" + path; //adding days so that the file can be sorted by days
-          await refreshFileList(path, folderLocs[key], pubLocs[key], key);
-        }
-        return true;
-      });
-      watcher[key].on('unlink', async function(path) {
-        console.log(path + " :::  DELETED");
-        if (locs[key] != null){
-          if (locs[key].indexOf(path) > -1){
-            locs[key].splice(locs[key].indexOf(path), 1);
-            await refreshFileList(path, folderLocs[key], pubLocs[key], key);
-          }
-        }
-        return true;
-      });
-    }
+async function startWatchers() {
+  for (let key in folderLocs) {
+    watcher[key] = chokidar.watch(folderLocs[key], {
+      persistent: true,
+      awaitWriteFinish: true,
+      ignoreInitial: true,
+    });
+
+    watcher[key].on('add', async (addedPath) => {
+      console.log(`${key} ::: ADDED ::: ${addedPath}`);
+      // Process the added file
+      await processFileChange(key);
+    });
+
+    watcher[key].on('unlink', async (removedPath) => {
+      console.log(`${removedPath} ::: DELETED`);
+      // Process the file list again to reflect the deletion
+      await processFileChange(key);
+    });
   }
+}
+
+async function processFileChange(key) {
+  let files = fs.readdirSync(folderLocs[key])
+                .map(file => path.join(folderLocs[key], file))
+                .filter(file => fs.statSync(file).isFile())
+                .map(file => {
+                  return {
+                    path: file,
+                    days: getFileDays(file),
+                  };
+                });
+
+  // Apply folderDayLimits logic
+  files.sort((a, b) => a.days - b.days); // Sort files by days in ascending order
+
+  if (folderDayLimits[key] === 0) {
+    files = [files[files.length - 1]]; // Keep only the latest file if limit is 0
+  } else if (folderDayLimits[key] > 0 && folderDayLimits[key] <= 5) {
+    files = files.slice(-folderDayLimits[key]); // Keep the latest N files
+  } else {
+    // If folderDayLimits[key] > 5, potentially filter by days, though your current logic doesn't require it
+  }
+
+  // Update locs for the direction
+  locs[key] = files.map(file => `${file.days};${file.path}`);
+
+  // Refresh file list based on the updated locs
+  await refreshFileList(null, null, null, key); // Assuming refreshFileList does not need the first three arguments based on your logic
+}
 
 //get the public locations as file names from the pubLocs array using the direction as the key
 //return JSON object with the fileNames as the key for filenames, direction, and fileType as the key for the fileType of .pdf
