@@ -344,70 +344,50 @@ function subMenu(key, folders, folderKeys, folderCats){
   menuAndBack.style.display = "flex";
 }
 
-function generateCard(key, functionFlag, folders, folderKeys, folderCats){
+function generateCard(key, functionFlag, folders, folderKeys, folderCats) {
   let column = document.createElement("div");
   column.classList.add("column");
-  if(key === "01SSHR_Inspection_Report"){
-    show01SSHR_Inspection_Report();
-  } else if(key === "02All_other_TARPS"){
-    show02All_other_TARPS();
-  } else if(key === "07RSHQ_Safety_Alerts"){
-    show07RSHQ_Safety_Alerts();
-  }else {
-    let row = document.getElementsByClassName(key);
-    row.item(0).appendChild(column);
-    let card = document.createElement("div");
-    card.classList.add("card");
-    card.id = key;
-    let cardText = key;
-    //remove the first two numbers from cardText
-    cardText = cardText.substring(2);
-    //replace any underscores with spaces in the cardText
-    cardText = cardText.replace(/_/g, " ");
-    card.innerHTML = "<img src='/icons/" + key + ".png' width='80' height='80'>";
-    card.innerHTML += "<h3>" + cardText + "</h3>";
-  
-    switch (functionFlag){
-      case "showReader":
-        if(key === "02Feedback"){
-        } else {
-          card.onclick = function(){
-            showReader(key);
-          };
-        }
-      break;
-      case "subMenu":
-        card.onclick = function(){
-          subMenu(key, folders, folderKeys, folderCats);
-        };
-      break;
-      case "url":
-        card.onclick = function(){
-          for(let keyC in urlCatless){
-            if(key === keyC){
-              let url = urlCatless[key].replace('/r', '');
-              location.href = url;
-            } else {
-              for(let keyCat in urlCated){
-                if(key === keyCat){
-                  let url = urlCated[key].replace('/r', '');
-                  location.href = url;
-                }
-              }
-            }
+
+      let row = document.getElementsByClassName(key);
+      if (row.length > 0) { // Ensure row is found
+          row.item(0).appendChild(column);
+      }
+      let card = document.createElement("div");
+      card.classList.add("card");
+      card.id = key;
+      let cardText = key.substring(2).replace(/_/g, " "); // Clean up card text
+      card.innerHTML = `<img src='/icons/${key}.png' width='80' height='80'><h3>${cardText}</h3>`;
+
+      // Setting onclick behavior based on functionFlag
+      card.onclick = function () {
+          switch (functionFlag) {
+              case "showReader":
+                  if (key !== "02Feedback") {
+                      showReader(key);
+                  }
+                  break;
+              case "subMenu":
+                  subMenu(key, folders, folderKeys, folderCats);
+                  break;
+              case "url":
+                  // Optimized logic to handle URL redirection
+                  if (urlCatless.hasOwnProperty(key)) {
+                      location.href = urlCatless[key].replace('/r', '');
+                  } else if (urlCated.hasOwnProperty(key)) {
+                      location.href = urlCated[key].replace('/r', '');
+                  }
+                  break;
+              default:
+                  showReader(key);
           }
-          location.href = urlCatless[key];
-        }
-      break;
-      default:
-        card.onclick = function(){
-          showReader(key);
-        };
-    }
-  column.appendChild(card);
-  }
+      };
+
+      column.appendChild(card);
+
+
   return column;
 }
+
 
 function show02All_other_TARPS(){
   document.getElementById("02All_other_TARPS").style.display = "block";

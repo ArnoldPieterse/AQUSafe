@@ -24,7 +24,7 @@ let queuedImagesArray = [],
         let images = "";
         savedImages.forEach((image, index) => {
           images += `<div class="image">
-                      <img src="http://localhost:30000/icons/${image}" alt="image">
+                      <img src="http://localhost:40000/icons/${image}" alt="image">
                       <span onclick="deleteSavedImage(${index})">&times;</span>
                     </div>`;
         })

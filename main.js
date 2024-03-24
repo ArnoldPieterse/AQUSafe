@@ -60,7 +60,7 @@ var staticUrlsT = 'ServerConfig/staticUrls.txt';
 
 //Initial function calls
 //update the GHR every 5 mins
-setInterval(updateGHR, 300000);
+//setInterval(updateGHR, 300000);
 readFolderLocs();
 readStaticUrls();
 readFolderCats();
@@ -213,13 +213,13 @@ app.get('/once/:direction', (req, res) => {
   res.sendFile('./once.html', {root: __dirname + '/public'});
 });
 
-/* app.get('/admin/:password', (req, res) => {
+app.get('/admin/:password', (req, res) => {
   if (req.params.password == "12345678"){
     res.sendFile('./admin.html', {root: __dirname + '/public'});
   } else {
     res.send("Incorrect password");
   }
-}); */
+});
 
 app.get('/url/:direction', (req, res) => {
   res.status(301).redirect(req.params.direction);
