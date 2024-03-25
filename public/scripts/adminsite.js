@@ -1,6 +1,8 @@
 
 // Autor: Dederick Pieterse
 
+var folderCatsOrder = [];
+
 async function getFolders(){
     const response = await fetch("/folders");
     const folders = await response.json();
@@ -90,150 +92,113 @@ async function submitCatIcons(){
     console.log(data);
 }
 
-window.onload = async function() {
-    confOps = document.getElementById("configOptions");
+function createIcon(iConName){
+    let img = document.createElement("img");
+    img.src = "/icons/" + iConName + ".png";
+    img.style.width = "50px";
+    img.style.height = "50px";
+    return img;
+}
+
+function createInput(id, type, value){
+    let input = document.createElement("input");
+    input.id = id;
+    input.type = type;
+    input.value = value;
+    return input;
+}
+
+function catUp(catKey) {
+    const index = folderCatsOrder.indexOf(catKey);
+    if (index > 0) {
+        [folderCatsOrder[index], folderCatsOrder[index - 1]] = [folderCatsOrder[index - 1], folderCatsOrder[index]];
+        renderOptions(); // Re-render categories
+    }
+}
+
+function catDown(catKey) {
+    const index = folderCatsOrder.indexOf(catKey);
+    if (index !== -1 && index < folderCatsOrder.length - 1) {
+        [folderCatsOrder[index], folderCatsOrder[index + 1]] = [folderCatsOrder[index + 1], folderCatsOrder[index]];
+        renderOptions(); // Re-render categories
+    }
+}
+
+
+async function renderOptions() {
+    confOps.innerHTML = ''; // Clear existing content
+
     let folders = await getFolders();
     let staticUrls = await getStaticUrls();
     let folderCats = await getFolderCats();
-    
+
     let staticUrlsCatless = {};
     let foldersCatless = {};
     let folderCated = {};
-    
 
-    for(let key in folderCats){
-        let category = document.createElement("input");
-        category.id = "category";
-        category.type = "text";
-        category.value = key + ":[" + folderCats[key] + "]";
-        category.innerText = key;
-        confOps.appendChild(category);
+    for (let key in folderCats) {
+        let wrapper = document.createElement("div");
+        wrapper.classList.add("category-wrapper"); // For styling and potentially adding drag-and-drop functionality
+        wrapper.id = key;
+        wrapper.appendChild(createIcon(key));
+        wrapper.appendChild(createInput("category", "text", key));
 
-
-        let icoimg = document.createElement("img");
-        icoimg.src = "/icons/" + key + ".png";
-        icoimg.style.width = "50px";
-        icoimg.style.height = "50px";
-        confOps.appendChild(icoimg);
-
-        let br11 = document.createElement("br");
-        confOps.appendChild(br11);
-        for(let fKey in folders){
-            //if the value of folderCats[key] contains the folders[fKey]
-            if(folderCats[key].includes(fKey)){
+        for (let fKey in folders) {
+            if (folderCats[key].includes(fKey)) {
                 folderCated[fKey] = folders[fKey];
-                let input = document.createElement("input");
-                input.id = "folder";
-                input.type = "text";
-                let folderName = fKey;
-                let folderPath = folders[fKey];
-                input.value = "" + folderName + "," + folderPath;
-                confOps.appendChild(input);
-
-                let icoimgfol = document.createElement("img");
-                icoimgfol.src = "/icons/" + fKey + ".png";
-                icoimgfol.style.width = "50px";
-                icoimgfol.style.height = "50px";
-                confOps.appendChild(icoimgfol);
+                wrapper.appendChild(createInput("folder", "text", `${fKey},${folders[fKey]}`));
+                wrapper.appendChild(createIcon(fKey));
             }
         }
-        for(let fkey in staticUrls){
-            if(folderCats[key].includes(fkey)){
-                folderCated[fkey] = staticUrls[fkey];
-                let input = document.createElement("input");
-                input.id = "folder";
-                input.type = "text";
-                let folderName = fkey;
-                let folderPath = staticUrls[fkey];
-                input.value = "" + folderName + "," + folderPath;
-                confOps.appendChild(input);
 
-                let icoimgfol = document.createElement("img");
-                icoimgfol.src = "/icons/" + fkey + ".png";
-                icoimgfol.style.width = "50px";
-                icoimgfol.style.height = "50px";
-                confOps.appendChild(icoimgfol);
+        for (let fKey in staticUrls) {
+            if (folderCats[key].includes(fKey)) {
+                folderCated[fKey] = staticUrls[fKey];
+                wrapper.appendChild(createInput("folder", "text", `${fKey},${staticUrls[fKey]}`));
+                wrapper.appendChild(createIcon(fKey));
             }
         }
-        let br1 = document.createElement("br");
-        let br2 = document.createElement("br");
-        let br3 = document.createElement("br");
-        confOps.appendChild(br1);
-        confOps.appendChild(br2);
-        confOps.appendChild(br3);
+        confOps.appendChild(wrapper);
     }
 
-    for(let key in folders){
-        for(let fKey in folderCats){
-            if(!folderCats[fKey].includes(key)){
-                if(folderCated[key] == undefined){
-                    foldersCatless[key] = folders[key];
-                }
-            }
+    for (let key in folders) {
+        if (!Object.values(folderCats).flat().includes(key) && folderCated[key] === undefined) {
+            foldersCatless[key] = folders[key];
         }
     }
 
-    for(let key in staticUrls){
-        for(let fKey in folderCats){
-            if(!folderCats[fKey].includes(key)){
-                if(folderCated[key] == undefined){
-                    staticUrlsCatless[key] = staticUrls[key];
-                }
-            }
+    for (let key in staticUrls) {
+        if (!Object.values(folderCats).flat().includes(key) && folderCated[key] === undefined) {
+            staticUrlsCatless[key] = staticUrls[key];
         }
     }
 
-    //for each folder in the folders array create a new input element with the value of the folder and add it to the configOptions form
-    for (let key in foldersCatless){
-        let input = document.createElement("input");
-        input.id = "folder";
-        input.type = "text";
-        //convert JSON object folders[i] to string
-        input.type = "text";
-        let folderName = key;
-        let folderPath = foldersCatless[key];
-        input.value = "" + folderName + "," + folderPath;
-        confOps.appendChild(input);
-        
+    // Appending catless items
+    appendCatlessItems(foldersCatless, confOps);
+    appendCatlessItems(staticUrlsCatless, confOps);
+}
 
-        let icoimgfol = document.createElement("img");
-        icoimgfol.src = "/icons/" + key + ".png";
-        icoimgfol.style.width = "50px";
-        icoimgfol.style.height = "50px";
-        confOps.appendChild(icoimgfol);
-
-        //create a new line break element and add it to the configOptions form
-        let br = document.createElement("br");
-        confOps.appendChild(br);
+function appendCatlessItems(items, parent) {
+    for (let key in items) {
+        let wrapper = document.createElement("div");
+        wrapper.classList.add("catless-wrapper");
+        wrapper.id = key;
+        wrapper.appendChild(createInput("folder", "text", `${key},${items[key]}`));
+        wrapper.appendChild(createIcon(key));
+        parent.appendChild(wrapper);
     }
-    for (let key in staticUrlsCatless){
-        let input = document.createElement("input");
-        input.id = "folder";
-        input.type = "text";
-        //convert JSON object folders[i] to string
-        input.type = "text";
-        let folderName = key;
-        let folderPath = staticUrlsCatless[key];
-        input.value = "" + folderName + "," + folderPath;
-        confOps.appendChild(input);
-        
+}
 
-        let icoimgfol = document.createElement("img");
-        icoimgfol.src = "/icons/" + key + ".png";
-        icoimgfol.style.width = "50px";
-        icoimgfol.style.height = "50px";
-        confOps.appendChild(icoimgfol);
+window.onload = async function() {
 
-        //create a new line break element and add it to the configOptions form
-        let br = document.createElement("br");
-        confOps.appendChild(br);
-    }
+    confOps = document.getElementById("configOptions");
+    let folderCats = await getFolderCats(); // Example function that fetches categories
+    folderCatsOrder = Object.keys(folderCats);
+    await renderOptions();
+
+
     //create a new input element with the value of "Add Folder" and add it to the configOptions form
-    let inputNew = document.createElement("input");
-    inputNew.id = "folder";
-    inputNew.type = "text";
-    inputNew.value = "Add Folder";
-    confOps.appendChild(inputNew);
+    confOps.appendChild(createInput("folder", "text", "Add Folder"));
 
     //add the submit button to the configOptions form
     let submit = document.createElement("button");
@@ -244,11 +209,7 @@ window.onload = async function() {
     let br5 = document.createElement("br");
     confOps.appendChild(br5);
 
-    let inputNewCat = document.createElement("input");
-    inputNewCat.id = "category";
-    inputNewCat.type = "text";
-    inputNewCat.value = "Add Category";
-    confOps.appendChild(inputNewCat);
+    confOps.appendChild(createInput("category", "text", "Add Category"));
 
     let submitCat = document.createElement("button");
     submitCat.type = "submit";
@@ -258,11 +219,7 @@ window.onload = async function() {
     let br6 = document.createElement("br");
     confOps.appendChild(br6);
 
-    let inputNewUrl = document.createElement("input");
-    inputNewUrl.id = "folder";
-    inputNewUrl.type = "text";
-    inputNewUrl.value = "Add Static URL";
-    confOps.appendChild(inputNewUrl);
+    confOps.appendChild(createInput("folder", "text", "Add Static URL"));
 
     let br7 = document.createElement("br");
     confOps.appendChild(br7);

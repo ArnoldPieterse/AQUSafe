@@ -40,10 +40,6 @@
     padding-bottom: 10px;
   }
   
-  .header h2 {
-    min-width: fit-content;
-  }
-  
   .server-message {
     width: 100%;
     padding: 16px;
@@ -134,4 +130,8 @@
     color: red;
     font-size: 1.2rem;
     font-weight: bold;
+  }
+
+  .drag-over {
+    background-color: #000; /* Light grey background */
   }
