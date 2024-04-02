@@ -142,6 +142,9 @@ async function renderOptions() {
         wrapper.id = key;
         wrapper.appendChild(createIcon(key));
         wrapper.appendChild(createInput("category", "text", key));
+        //add a br element to wrapper
+        let br = document.createElement("br");
+        wrapper.appendChild(br);
 
         for (let fKey in folders) {
             if (folderCats[key].includes(fKey)) {
